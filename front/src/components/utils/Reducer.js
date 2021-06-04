@@ -1,5 +1,13 @@
- function reducer(state, action) {
+function reducer(state, action) {
     switch (action.type) {
+        //prueba
+
+        //casos de los todoList
+        case 'todolist-add':
+            const todoList = state.todoList.list;
+            todoList.push(action.todoList);
+            return {...state, todoList:todoList};
+        //casos de los todos
         case 'update-item':
             const todoUpItem = state.todo;
             const listUpdateEdit = todoUpItem.list.map((item) => {

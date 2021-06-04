@@ -1,5 +1,7 @@
+
 function reducer(state, action) {
     switch (action.type) {
+
         case 'update-item':
             const todoUpItem = state.todo;
             const listUpdateEdit = todoUpItem.list.map((item) => {
