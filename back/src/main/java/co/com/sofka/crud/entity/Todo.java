@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "todo")
 public class Todo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private Long id;
     private String name;
     private boolean completed;
