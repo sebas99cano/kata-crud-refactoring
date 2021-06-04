@@ -14,7 +14,7 @@ public interface TodoMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "completed", target = "completed"),
-            @Mapping(source = "groupListId", target = "groupListId"),
+            @Mapping(source = "groupListId", target = "groupListId")
     })
     TodoDto toTodoDto(Todo todo);
     Iterable<TodoDto> toTodoDto (Iterable<Todo> todos);

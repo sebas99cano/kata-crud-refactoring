@@ -18,7 +18,7 @@ public class TodoController {
     }
 
     @PostMapping(value = "api/todo")
-    public TodoDto todoDto(@RequestBody TodoDto todoDto){
+    public TodoDto save(@RequestBody TodoDto todoDto){
         return service.save(todoDto);
     }
 

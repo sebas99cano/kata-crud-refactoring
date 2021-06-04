@@ -13,7 +13,7 @@ public class TodoList {
     private Long id;
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "groupListId")
     private Set<Todo> todos;
 
