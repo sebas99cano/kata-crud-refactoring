@@ -1,9 +1,12 @@
 package co.com.sofka.crud.controllers;
 
+import co.com.sofka.crud.dto.TodoDto;
 import co.com.sofka.crud.dto.TodoListDto;
 import co.com.sofka.crud.services.TodoListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -11,6 +14,11 @@ public class TodoListController {
 
     @Autowired
     private TodoListService service;
+
+    @GetMapping(value = "api/list/{id}/todo")
+    public Set<TodoDto> listTodoByListIb(@PathVariable("id")Long id){
+        return service.listTodoByListIb(id);
+    }
 
     @GetMapping(value = "api/list")
     public  Iterable<TodoListDto> list(){

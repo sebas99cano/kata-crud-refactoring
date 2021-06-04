@@ -13,6 +13,7 @@ public interface TodoListMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "name", target = "name"),
+            @Mapping(source = "todos", target = "todoDto")
     })
     TodoListDto toTodoListDto(TodoList todoList);
     Iterable<TodoListDto> toTodoListDto (Iterable<TodoList> todoList);
