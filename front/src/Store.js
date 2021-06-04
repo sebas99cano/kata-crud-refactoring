@@ -1,5 +1,5 @@
 import React, { useReducer, createContext } from 'react';
-import reducer from "./components/todo/Reducer";
+import reducer from "./components/todo/TodoReducer";
 
 const initialState = {
     todo: { list: [], item: {} }
