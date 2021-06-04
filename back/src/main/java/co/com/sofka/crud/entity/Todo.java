@@ -1,4 +1,4 @@
-package co.com.sofka.crud.todo;
+package co.com.sofka.crud.entity;
 
 import javax.persistence.*;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "todo")
 public class Todo {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
     private boolean completed;

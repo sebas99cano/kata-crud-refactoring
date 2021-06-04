@@ -1,7 +1,9 @@
-package co.com.sofka.crud.todo;
+package co.com.sofka.crud.dao;
 
-import co.com.sofka.crud.todo.Todo;
+import co.com.sofka.crud.entity.Todo;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface TodoRepository extends CrudRepository<Todo, Long> {
 }
