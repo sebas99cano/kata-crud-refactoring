@@ -1,6 +1,6 @@
 import React from 'react';
-import {StoreProvider} from './Store';
-import TodoList from './components/todo/TodoList';
+import {StoreProvider} from './components/utils/Store';
+import Todo from './components/todo/TodoList';
 import TodoForm from './components/todo/TodoForm';
 
 
@@ -9,7 +9,7 @@ function App() {
     
     <h3>To-Do List</h3>
     <TodoForm />
-    <TodoList />
+    <Todo />
   </StoreProvider>
 }
 export default App;

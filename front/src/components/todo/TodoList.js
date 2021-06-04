@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import Store from '../../Store';
+import Store from '../utils/Store';
 
 const HOST_API = "http://localhost:8080/api";
 
-const TodoList = () => {
+const Todo = () => {
   const { dispatch, state: { todo } } = useContext(Store);
   const currentList = todo.list;
 
@@ -74,4 +74,4 @@ const TodoList = () => {
   </div>
 }
 
-export default TodoList;
+export default Todo;
