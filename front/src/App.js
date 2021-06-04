@@ -1,15 +1,15 @@
 import React from 'react';
 import {StoreProvider} from './Store';
-import List from './components/todo/TodoList';
-import Form from './components/todo/TodoForm';
+import TodoList from './components/todo/TodoList';
+import TodoForm from './components/todo/TodoForm';
 
 
 function App() {
   return <StoreProvider>
+    
     <h3>To-Do List</h3>
-    <Form />
-    <List />
+    <TodoForm />
+    <TodoList />
   </StoreProvider>
 }
-
 export default App;

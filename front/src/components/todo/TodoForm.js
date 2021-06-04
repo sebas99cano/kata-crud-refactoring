@@ -3,7 +3,7 @@ import Store from '../../Store';
 
 const HOST_API = "http://localhost:8080/api";
 
-const Form = () => {
+const TodoForm = () => {
 
     const formRef = useRef(null);
     const { dispatch, state: { todo } } = useContext(Store);
@@ -75,4 +75,4 @@ const Form = () => {
   }
 
 
-  export default Form;
+  export default TodoForm;

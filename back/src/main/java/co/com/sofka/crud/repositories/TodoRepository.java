@@ -1,4 +1,4 @@
-package co.com.sofka.crud.dao;
+package co.com.sofka.crud.repositories;
 
 import co.com.sofka.crud.entity.Todo;
 import org.springframework.data.repository.CrudRepository;

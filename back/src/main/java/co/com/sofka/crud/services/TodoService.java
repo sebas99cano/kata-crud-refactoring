@@ -1,6 +1,6 @@
 package co.com.sofka.crud.services;
 
-import co.com.sofka.crud.dao.TodoRepository;
+import co.com.sofka.crud.repositories.TodoRepository;
 import co.com.sofka.crud.dto.TodoDto;
 import co.com.sofka.crud.entity.Todo;
 import co.com.sofka.crud.mapper.TodoMapper;
