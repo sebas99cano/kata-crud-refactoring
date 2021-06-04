@@ -1,6 +1,6 @@
 import React from 'react';
 import {StoreProvider} from './components/utils/Store';
-import Todo from './components/todo/TodoList';
+import Todo from './components/todo/Todo';
 import TodoForm from './components/todo/TodoForm';
 
 
