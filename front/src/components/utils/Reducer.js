@@ -3,10 +3,15 @@ function reducer(state, action) {
         //prueba
 
         //casos de los todoList
+        case 'todolist':
+            const todoList = state.todoList;
+            todoList.list = action.list;
+            return { ...state, todoList: todoList };
+
         case 'todolist-add':
-            const todoList = state.todoList.list;
-            todoList.push(action.todoList);
-            return {...state, todoList:todoList};
+            const todoListAdd = state.todoList.list;
+            todoListAdd.push(action.todoList);
+            return { ...state, todoList: todoListAdd };
         //casos de los todos
         case 'update-item':
             const todoUpItem = state.todo;
