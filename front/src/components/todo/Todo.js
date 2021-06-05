@@ -3,9 +3,11 @@ import Store from '../utils/Store';
 
 const HOST_API = "http://localhost:8080/api";
 
-const Todo = () => {
-  const { dispatch, state: { todo } } = useContext(Store);
-  const currentList = todo.list;
+const Todo = ({TodoListId}) => {
+  const {dispatch, state:{todo}} = useContext(Store);
+    const currentList = todo.list.filter(todo => {
+      return todo.groupListId === TodoListId;
+    });
 
   useEffect(() => {
     fetch(HOST_API + "/todos")
@@ -51,12 +53,14 @@ const Todo = () => {
     textDecoration: 'line-through'
   };
   return <div>
-    <table >
-      <thead>
+    <table className="table table-striped">
+      <thead className="thead-dark">
         <tr>
           <td>ID</td>
           <td>Tarea</td>
           <td>¿Completado?</td>
+          <td>Eliminar Tarea</td>
+          <td>Editar Tarea</td>
         </tr>
       </thead>
       <tbody>
@@ -65,8 +69,8 @@ const Todo = () => {
             <td>{todo.id}</td>
             <td>{todo.name}</td>
             <td><input type="checkbox" defaultChecked={todo.completed} onChange={(event) => onChange(event, todo)}></input></td>
-            <td><button onClick={() => onDelete(todo.id)}>Eliminar</button></td>
-            <td><button onClick={() => onEdit(todo)}>Editar</button></td>
+            <td><button onClick={() => onDelete(todo.id)} className="btn btn-danger">Eliminar</button></td>
+            <td><button onClick={() => onEdit(todo)} className="btn btn-success">Editar</button></td>
           </tr>
         })}
       </tbody>

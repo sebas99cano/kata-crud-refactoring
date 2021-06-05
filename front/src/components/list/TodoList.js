@@ -6,45 +6,39 @@ import TodoForm from '../todo/TodoForm';
 const HOST_API = "http://localhost:8080/api";
 
 const TodoList = () => {
-  const { dispatch, state: { todoList } } = useContext(Store);
-  const currentTodoList = todoList.list;
+    const { dispatch, state: { todoList } } = useContext(Store);
+    const currentTodoList = todoList.list;
 
-  useEffect(() => {
-    fetch(HOST_API + "/list")
-      .then(response => response.json())
-      .then((list) => {
-        dispatch({ type: "todolist", list })
-      })
-  }, [dispatch]);
+    useEffect(() => {
+        fetch(HOST_API + "/list")
+            .then(response => response.json())
+            .then((list) => {
+                dispatch({ type: "todolist", list })
+            })
+    }, [dispatch]);
 
-  const onChange = (event, todo) => {
-    const request = {
-      name: todo.name,
-      id: todo.id,
-      completed: event.target.checked
+    const onDelete = (id) => {
+        fetch(HOST_API + "/" + id + "/list", {
+            method: "DELETE"
+        }).then((list) => {
+            dispatch({ type: "delete-todolist", id })
+        })
     };
-    fetch(HOST_API + "/todo", {
-      method: "PUT",
-      body: JSON.stringify(request),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(response => response.json())
-      .then((todo) => {
-        dispatch({ type: "update-item", item: todo });
-      });
-  };
 
-  return<div>
+    return <div className=" container text-center">
         {currentTodoList.map((elemento) => {
-          return <div key={elemento.id}>
-            <TodoForm/>
-            <Todo/>
-          </div>
+            return <div key={elemento.id} className="row border rounded">
+                <div className="input-group mb-3">
+                    <span className="input-group-text">Nombre de la TodoList</span>
+                    <input type="text" className="form-control" disabled={true} value={elemento.name} />
+                    <button onClick={() => onDelete(elemento.id)} className="btn btn-outline-danger">Eliminar</button>
+                </div>
+                <TodoForm TodoListId={elemento.id} />
+                <Todo TodoListId={elemento.id} />
+            </div>
         })}
     </div>
-  
+
 }
 
 export default TodoList;

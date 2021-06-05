@@ -12,7 +12,6 @@ const TodoListForm = () => {
 
     const onAdd = (event) => {
         event.preventDefault();
-
         const request = {
             name: state.name,
             id: null

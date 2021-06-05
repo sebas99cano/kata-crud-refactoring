@@ -10,7 +10,7 @@ function App() {
     <div className="container">
       <br />
       <div className="row border rounded">
-        <h1>Aqui empieza el codigo</h1>
+        <h1>Ingresa una lista de TodoList</h1>
         <TodoListForm />
       </div>
       <br />

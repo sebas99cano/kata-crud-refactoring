@@ -1,8 +1,15 @@
 function reducer(state, action) {
     switch (action.type) {
-        //prueba
 
         //casos de los todoList
+        case 'delete-todolist':
+            const todoListDelete = state.todoList;
+            const todoListIsUpdate = todoListDelete.list.filter((elemento) => {
+                return elemento.id !== action.id;
+            });
+            todoListDelete.list = todoListIsUpdate;
+            return { ...state, todoList: todoListDelete }
+
         case 'todolist':
             const todoList = state.todoList;
             todoList.list = action.list;
@@ -10,8 +17,8 @@ function reducer(state, action) {
 
         case 'todolist-add':
             const todoListAdd = state.todoList.list;
-            todoListAdd.push(action.todoList);
-            return { ...state, todoList: todoListAdd };
+            todoListAdd.push(action.item);
+            return { ...state, todoList: {list:todoListAdd} };
         //casos de los todos
         case 'update-item':
             const todoUpItem = state.todo;

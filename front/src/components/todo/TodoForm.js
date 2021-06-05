@@ -3,7 +3,7 @@ import Store from '../utils/Store';
 
 const HOST_API = "http://localhost:8080/api";
 
-const TodoForm = () => {
+const TodoForm = ({TodoListId}) => {
 
     const formRef = useRef(null);
     const { dispatch, state: { todo } } = useContext(Store);
@@ -16,7 +16,8 @@ const TodoForm = () => {
       const request = {
         name: state.name,
         id: null,
-        completed: false
+        completed: false,
+        groupListId: TodoListId
       };
   
   
@@ -41,7 +42,8 @@ const TodoForm = () => {
       const request = {
         name: state.name,
         id: item.id,
-        isCompleted: item.isCompleted
+        isCompleted: item.isCompleted,
+        groupListId: TodoListId
       };
   
   
