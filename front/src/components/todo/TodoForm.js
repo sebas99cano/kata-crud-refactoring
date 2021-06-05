@@ -1,80 +1,80 @@
-import React, { useContext, useRef, useState} from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Store from '../utils/Store';
 
 const HOST_API = "http://localhost:8080/api";
 
-const TodoForm = ({TodoListId}) => {
+const TodoForm = ({ TodoListId }) => {
 
-    const formRef = useRef(null);
-    const { dispatch, state: { todo } } = useContext(Store);
-    const item = todo.item;
-    const [state, setState] = useState(item);
-  
-    const onAdd = (event) => {
-      event.preventDefault();
-  
-      const request = {
-        name: state.name,
-        id: null,
-        completed: false,
-        groupListId: TodoListId
-      };
-  
-  
-      fetch(HOST_API + "/todo", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(response => response.json())
-        .then((todo) => {
-          dispatch({ type: "add-item", item: todo });
-          setState({ name: "" });
-          formRef.current.reset();
-        });
-    }
-  
-    const onEdit = (event) => {
-      event.preventDefault();
-  
-      const request = {
-        name: state.name,
-        id: item.id,
-        isCompleted: item.isCompleted,
-        groupListId: TodoListId
-      };
-  
-  
-      fetch(HOST_API + "/todo", {
-        method: "PUT",
-        body: JSON.stringify(request),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(response => response.json())
-        .then((todo) => {
-          dispatch({ type: "update-item", item: todo });
-          setState({ name: "" });
-          formRef.current.reset();
-        });
-    }
-  
-    return <form ref={formRef}>
-      <input
-        type="text"
-        name="name"
-        placeholder="¿Qué piensas hacer hoy?"
-        defaultValue={item.name}
+  const formRef = useRef(null);
+  const { dispatch, state: { todo } } = useContext(Store);
+  const item = todo.item;
+  const [state, setState] = useState(item);
+
+  const onAdd = (event) => {
+    event.preventDefault();
+
+    const request = {
+      name: state.name,
+      id: null,
+      completed: false,
+      groupListId: TodoListId
+    };
+
+
+    fetch(HOST_API + "/todo", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then((todo) => {
+        dispatch({ type: "add-item", item: todo });
+        setState({ name: "" });
+        formRef.current.reset();
+      });
+  }
+
+  const onEdit = (event) => {
+    event.preventDefault();
+
+    const request = {
+      name: state.name,
+      id: item.id,
+      isCompleted: item.isCompleted,
+      groupListId: TodoListId
+    };
+
+
+    fetch(HOST_API + "/todo", {
+      method: "PUT",
+      body: JSON.stringify(request),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then((todo) => {
+        dispatch({ type: "update-item", item: todo });
+        setState({ name: "" });
+        formRef.current.reset();
+      });
+  }
+
+  return <form ref={formRef}>
+    <div className="input-group mb-3">
+      <span className="input-group-text">Nombre de la Tarea</span>
+      <input type="text" name="name" className="form-control" defaultValue={item.name}
         onChange={(event) => {
           setState({ ...state, name: event.target.value })
         }}  ></input>
-      {item.id && <button onClick={onEdit}>Actualizar</button>}
-      {!item.id && <button onClick={onAdd}>Crear</button>}
-    </form>
-  }
+          {item.id && <button onClick={onEdit} className="btn btn-primary" >Actualizar</button>}
+    {!item.id && <button onClick={onAdd} className="btn btn-success" >Crear</button>}</div>
+    
+
+  </form>
+}
 
 
-  export default TodoForm;
+export default TodoForm;
