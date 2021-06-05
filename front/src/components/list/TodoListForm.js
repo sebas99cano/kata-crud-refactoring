@@ -30,16 +30,19 @@ const TodoListForm = () => {
             });
     }
 
-    return <form ref={formRef}>
-        <input type="text"
+    return <form ref={formRef} className="form">
+        <input
+            className="form-control"
+            type="text"
             name="name"
             placeholder="Agrega una nueva lista de tareas"
             onChange={(event) => {
                 setState({ ...state, name: event.target.value })
             }}  ></input>
-        <button onClick={onAdd}>Crear</button>
+        <br />
+        <button onClick={onAdd} className="btn btn-primary">Crear nueva lista de tareas</button>
+        <br />
     </form>
 }
-
 
 export default TodoListForm;
